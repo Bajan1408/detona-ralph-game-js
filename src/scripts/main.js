@@ -28,7 +28,7 @@ function countDown() {
 }
 
 function playSound(audioName) {
-    let audio = new Audio(`../src/audios/${audioName}.m4a`);
+    let audio = new Audio(`../../src/audios/${audioName}`);
     audio.volume = 0.2;
     audio.play();
 }
@@ -44,11 +44,6 @@ function randomSquare() {
     state.values.hitPosition = randomSquare.id;
 }
 
-// function moveEnemy() {
-//     state.values.timerId = setInterval(randomSquare, state.values.gameVelocity);
-// }
-
-
 function addListenerHitbox() {
     state.view.squares.forEach((square) => {
         square.addEventListener('mousedown', () => {
@@ -56,7 +51,10 @@ function addListenerHitbox() {
                 state.values.result++;
                 state.view.score.textContent = state.values.result;
                 state.values.hitPosition = null;
-                playSound('hit');
+                playSound('hit.m4a');
+                //playSound('fail.mp3');
+            } else {
+                playSound('fail.mp3');
             }
             
         })
